@@ -24,7 +24,7 @@
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_marginTop="8dp"
-                android:src="@mipmap/fgf_logo" />
+                android:src="@mipmap/tracker" />
 
             <ImageView
                 android:id="@+id/buttonClose"
@@ -39,7 +39,7 @@
             android:id="@+id/layoutExpanded"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#63AF34"
+            android:background="#F6304C"
             android:orientation="horizontal"
             android:padding="8dp"
             android:visibility="gone">
@@ -48,7 +48,7 @@
                 android:id="@+id/buttonSimplifiedCodingExpanded"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:src="@mipmap/fgf_logo"
+                android:src="@mipmap/tracker"
                 tools:ignore="ContentDescription" />
 
             <LinearLayout
