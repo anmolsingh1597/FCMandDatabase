@@ -28,6 +28,9 @@ import android.view.Display;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,6 +53,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     double latitudeIntent;
     double longitudeIntent;
     ApplicationStatus applicationStatus;
+    View userCredentials;
+    View latLngValues;
+    EditText nameET;
+    Button submitBtn;
+    TextView userNameTV;
+    TextView latTV;
+    TextView lngTV;
+    TextView speedTV;
+    double speed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +78,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         requestLocationPermission();
 
         notificationTestProcedure();
+
+        initials();
+    }
+
+    private void initials() {
+        userCredentials = findViewById(R.id.userCredentials);
+        latLngValues = findViewById(R.id.coordinatesValues);
+
+        //---------//
+        nameET = findViewById(R.id.nameEditText);
+        submitBtn = findViewById(R.id.buttonSubmitUserName);
+        userNameTV = findViewById(R.id.userTextView);
+        latTV = findViewById(R.id.latTextView);
+        lngTV = findViewById(R.id.longTextView);
+        speedTV = findViewById(R.id.speedTextView);
+        userCredentials.setVisibility(View.VISIBLE);
+        latLngValues.setVisibility(View.INVISIBLE);
+
+        submitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                userNameTV.setText("User: "+nameET.getText());
+                userCredentials.setVisibility(View.INVISIBLE);
+                latLngValues.setVisibility(View.VISIBLE);
+                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(nameET.getWindowToken(), 0);
+            }
+        });
+
     }
 
     private void notificationTestProcedure() {
@@ -91,9 +132,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void requestLocationPermission() {
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         locationListener = new LocationListener() {
+            Location lastLoc;
             @Override
             public void onLocationChanged(Location location) {
                 Log.i(TAG, "onLocationChanged: " + location);
+
+                latTV.setText("Latitude: " + String.format("%.6f", location.getLatitude()));
+                lngTV.setText("Longitude: " + String.format("%.6f",location.getLongitude()));
+
+
+                if (this.lastLoc != null)
+                    speed = Math.sqrt(
+                            Math.pow(location.getLongitude() - lastLoc.getLongitude(), 2)
+                                    + Math.pow(location.getLatitude() - lastLoc.getLatitude(), 2)
+                    ) / (location.getTime() - this.lastLoc.getTime());
+                //if there is speed from location
+                if (location.hasSpeed())
+                    speed = location.getSpeed();
+                this.lastLoc = location;
+
+                speedTV.setText("Speed: "+ String.format("%.2f", speed)+"m/s");
             }
 
             @Override
@@ -215,7 +273,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Toast.makeText(this, "onDestroy", Toast.LENGTH_LONG).show();
+//        Toast.makeText(this, "onDestroy", Toast.LENGTH_LONG).show();
         Log.d(TAG, "onDestroy: ");
     }
 
@@ -223,7 +281,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onPause() {
         super.onPause();
 
-        Toast.makeText(this, "onPause", Toast.LENGTH_LONG).show();
+//        Toast.makeText(this, "onPause", Toast.LENGTH_LONG).show();
         Log.d(TAG, "onPause: ");
 
     }
@@ -231,7 +289,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onResume() {
         super.onResume();
-        Toast.makeText(this, "onResume", Toast.LENGTH_LONG).show();
+//        Toast.makeText(this, "onResume", Toast.LENGTH_LONG).show();
         Log.d(TAG, "onResume: ");
     }
 

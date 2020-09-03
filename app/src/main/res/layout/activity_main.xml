@@ -3,13 +3,93 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:keepScreenOn="true">
+<RelativeLayout
+    android:id="@+id/userCredentials"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <EditText
+        android:id="@+id/nameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="250dp"
+        android:hint="Enter your name"
+        android:textAlignment="center"
+        android:textColor="@color/textColor"
+        />
+
+    <Button
+        android:id="@+id/buttonSubmitUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nameEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-219dp"
+        android:background="#000"
+        android:text="Submit"
+        android:textColor="@color/textColor" />
+</RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/coordinatesValues"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/userTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:text="User: "
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/textColor"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/latTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="250dp"
+        android:text="Latitude: "
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/textColor"
+        android:textStyle="bold"/>/>
+    <TextView
+        android:id="@+id/longTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="300dp"
+        android:text="Longitude: "
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/textColor"
+        android:textStyle="bold"/>/>
+    <TextView
+        android:id="@+id/speedTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="350dp"
+        android:text="Speed: "
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/textColor"
+        android:textStyle="bold"/>
+    </RelativeLayout>
 
     <Button
         android:id="@+id/buttonCreateWidget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Create Floating Widget" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="600dp"
+        android:background="#000"
+        android:text="Create Floating Widget"
+        android:textColor="@color/textColor"/>
 
 
 </RelativeLayout>

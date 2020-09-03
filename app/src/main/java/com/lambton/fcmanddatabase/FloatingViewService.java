@@ -152,7 +152,7 @@ public class FloatingViewService extends Service implements View.OnClickListener
                     speed = location.getSpeed();
                 this.lastLoc = location;
 
-                speedTextView.setText("Speed: "+String.valueOf(speed)+"m/s");
+                speedTextView.setText("Speed: "+ String.format("%.2f", speed)+"m/s");
             }
 
             @Override
