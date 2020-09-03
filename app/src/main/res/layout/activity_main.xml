@@ -2,8 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:keepScreenOn="true">
-<RelativeLayout
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <RelativeLayout
     android:id="@+id/userCredentials"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -28,7 +36,8 @@
         android:background="#000"
         android:text="Submit"
         android:textColor="@color/textColor" />
-</RelativeLayout>
+
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/coordinatesValues"
@@ -81,12 +90,23 @@
         android:textStyle="bold"/>
     </RelativeLayout>
 
+
+
+
+    <com.github.anastr.speedviewlib.PointerSpeedometer
+        android:id="@+id/speedView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/coordinatesValues"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" />
+
     <Button
         android:id="@+id/buttonCreateWidget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="600dp"
+        android:layout_marginTop="700dp"
         android:background="#000"
         android:text="Create Floating Widget"
         android:textColor="@color/textColor"/>
