@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/relativeMapLayout"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 <fragment xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -25,12 +30,13 @@
         android:id="@+id/mapPIPBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="240dp"
-        android:layout_marginTop="30dp"
-        android:background="#ff7b00"
+        android:layout_marginLeft="305sp"
+        android:layout_marginTop="70sp"
+        android:background="@drawable/btn_rounded_red"
         android:padding="15dp"
-        android:text="Switch Apps"
+        android:text="Minimize App"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="#fff"></Button>
 </fragment>
+</RelativeLayout>
