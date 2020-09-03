@@ -17,9 +17,17 @@ import com.google.firebase.messaging.RemoteMessage;
 import com.lambton.fcmanddatabase.R;
 import com.lambton.fcmanddatabase.model.ApplicationStatus;
 
+import java.sql.Timestamp;
+
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     ApplicationStatus applicationStatus;
+    public static String user;
+    public static String lat;
+    public static String lng;
+    public static String speed;
+    Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+
 
     @Override
     public void onMessageReceived(RemoteMessage message) {
@@ -43,11 +51,13 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("notifications");
 
-        applicationStatus = new ApplicationStatus("Foreground: " + message.getNotification().getTitle(),"Foreground: " +message.getNotification().getBody());
+        applicationStatus = new ApplicationStatus(user,lat,lng,speed,"Active",timestamp.toString());
 
         myRef.push().setValue(applicationStatus);
         Log.d("TAG", "onMessageReceived: " + "Foreground: " + message.getNotification().getTitle());
     }
+
+
 
 
 

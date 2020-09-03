@@ -130,6 +130,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                     LatLng userLocation = new LatLng(location.getLatitude(), location.getLongitude());
 //                    mMap.addMarker(new MarkerOptions().position(userLocation).title("Your Location"));
+
                     if (this.lastLoc != null)
                         speed = Math.sqrt(
                                 Math.pow(location.getLongitude() - lastLoc.getLongitude(), 2)
@@ -142,14 +143,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                     speedDouble = Double.parseDouble(String.format("%.2f", speed));
                     speedDouble = speedDouble * 3.6179;
-
+//                    "Speed: "+ String.format("%.2f", speedDouble)+"Km/h";
 
                     assert speedometer != null;
                     speedometer.setWithTremble(false);
                     speedometer.speedTo(Math.round(speedDouble), 500);
-                    Log.d(TAG, "onLocationChanged: "+Math.round(speedDouble));
+
 
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15));
+
+                    MyFirebaseMessagingService.user = "Anmol";
+                    MyFirebaseMessagingService.lat = String.format("%.6f",location.getLatitude());
+                    MyFirebaseMessagingService.lng = String.format("%.6f",location.getLongitude());
+                    MyFirebaseMessagingService.speed = String.format("%.2f", speedDouble)+"Km/h";
                 }
             }
         };
