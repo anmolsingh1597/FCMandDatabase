@@ -17,7 +17,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.util.Rational;
 import android.view.Display;
+import android.view.KeyEvent;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.github.anastr.speedviewlib.PointerSpeedometer;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -67,6 +71,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private void initials() {
         speedometer = findViewById(R.id.speedViewMapActivity);
+        Button mapPIP = findViewById(R.id.mapPIPBtn);
+        mapPIP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                enterPictureInPicture();
+            }
+        });
     }
 
     /**
@@ -199,6 +210,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onBackPressed() {
 //        super.onBackPressed();
+        enterPictureInPicture();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
         enterPictureInPicture();
     }
 

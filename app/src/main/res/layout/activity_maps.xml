@@ -12,13 +12,25 @@
         android:id="@+id/speedViewMapActivity"
         android:layout_width="wrap_content"
         android:layout_height="150dp"
-        android:layout_marginTop="600dp"
         android:layout_marginLeft="130dp"
-        map:sv_unitTextSize="10dp"
-        map:sv_speedTextSize="10dp"
-        map:sv_textSize="10dp"
+        android:layout_marginTop="600dp"
         map:sv_centerCircleRadius="1dp"
+        map:sv_indicatorWidth="3dp"
         map:sv_markHeight="1dp"
         map:sv_markWidth="1dp"
-        map:sv_indicatorWidth="3dp"/>
+        map:sv_speedTextSize="10dp"
+        map:sv_textSize="10dp"
+        map:sv_unitTextSize="10dp"/>
+    <Button
+        android:id="@+id/mapPIPBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="240dp"
+        android:layout_marginTop="30dp"
+        android:background="#ff7b00"
+        android:padding="15dp"
+        android:text="Switch Apps"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#fff"></Button>
 </fragment>
